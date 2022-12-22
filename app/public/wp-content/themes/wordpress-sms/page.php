@@ -17,6 +17,7 @@ while (have_posts()) {
 
 <div class="container container--narrow page-section">
     <?php
+    // check if this page has a parent
     $theParent = wp_get_post_parent_id(get_the_ID());
     if ($theParent) { ?>
     <div class="metabox metabox--position-up metabox--with-home-link">
@@ -31,24 +32,35 @@ while (have_posts()) {
     }
     ?>
 
-
+    <?php
+        // check if there are child pages
+        $checkChildPages = get_pages(array(
+            'child_of' => get_the_ID()
+            )
+        );
+        // check if the page is parent or a child page then will show the page-links
+        if($theParent or $checkChildPages){ ?>
     <div class="page-links">
         <h2 class="page-links__title"><a
                 href="<?php echo get_permalink($theParent) ?>"><?php echo get_the_title($theParent) ?></a></h2>
         <ul class="min-list">
             <?php
-                if($theParent){
-                    $findChildrenOf = $theParent;
-                }else{
-                    $findChildrenOf = get_the_ID();
-                }
-                wp_list_pages(array(
-                    'title_li' => NULL,
-                    'child_of' => $findChildrenOf,
-                ));
-            ?>
+                        if($theParent){
+                            $findChildrenOf = $theParent;
+                        }else{
+                            $findChildrenOf = get_the_ID();
+                        }
+                        wp_list_pages(array(
+                            'title_li' => NULL,
+                            'child_of' => $findChildrenOf,
+                        ));
+                    ?>
         </ul>
     </div>
+    <?php
+      }
+    ?>
+
 
     <div class="generic-content">
         <?php the_content(); ?>
