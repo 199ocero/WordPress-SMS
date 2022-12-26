@@ -13,3 +13,4 @@ AH00558: httpd: Could not reliably determine the server's fully qualified domain
 AH00558: httpd: Could not reliably determine the server's fully qualified domain name, using Jay-Ares-MacBook-Air.local. Set the 'ServerName' directive globally to suppress this message
 [Mon Dec 26 10:06:31.853159 2022] [mpm_event:notice] [pid 2002:tid 8609419968] AH00489: Apache/2.4.43 (Unix) configured -- resuming normal operations
 [Mon Dec 26 10:06:31.854559 2022] [core:notice] [pid 2002:tid 8609419968] AH00094: Command line: '/Users/jay-areocero/Library/Application Support/Local/lightning-services/apache-2.4.43+8/bin/darwin/bin/httpd -D FOREGROUND -f /Users/jay-areocero/Library/Application Support/Local/run/B8wftqX_v/conf/apache/apache2.conf'
+[Mon Dec 26 21:10:19.681246 2022] [mpm_event:notice] [pid 2002:tid 8609419968] AH00491: caught SIGTERM, shutting down
