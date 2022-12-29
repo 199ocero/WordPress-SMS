@@ -1,4 +1,6 @@
 <?php
+
+// Load the scripts and styles
 function sms_resources()
 {
     wp_enqueue_style('sms_main_style', get_theme_file_uri('/build/style-index.css'));
@@ -9,6 +11,7 @@ function sms_resources()
 }
 add_action('wp_enqueue_scripts', 'sms_resources');
 
+// Add features to theme
 function sms_features()
 {
     register_nav_menu('headerMenuLocation', 'Header Menu Location');
@@ -18,3 +21,23 @@ function sms_features()
 }
 
 add_action('after_setup_theme', 'sms_features');
+
+// Add a posts type in admin side bar
+function sms_posts_types()
+{
+    // register a posts type named Event and set to public => true so
+    // any users can see it in dashboard
+    register_post_type('event', array(
+        'public' => true,
+        'labels' => array(
+            'name' => 'Events',
+            'add_new_item' => 'Add New Event',
+            'edit_item' => 'Edit Event',
+            'all_items' => 'All Events',
+            'singular_name' => 'Event'
+        ),
+        'menu_icon' => 'dashicons-calendar'
+    ));
+}
+
+add_action('init', 'sms_posts_types');

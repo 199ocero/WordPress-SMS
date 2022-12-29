@@ -872,6 +872,8 @@ body.login {
   }
 }
 .main-navigation .current-menu-item a,
+.current_page_parent a,
+.current-page-ancestor a,
 .main-navigation a:hover {
   color: #faf0ca;
 }
